@@ -95,6 +95,11 @@ function game(){
 
         let winner = checkWinner(playerMoves[game-1], computerMoves[game-1]);
 
+        if (winner == "player")
+            playerScore++;
+        if (winner == "computer")
+            computerScore++;
+
         alert(`
         ${messageToPlayer(winner)}
 
@@ -102,6 +107,17 @@ function game(){
         The computer played: ${computerMoves[game-1]}
         `);
     }
+
+    alert(`
+    Game finished!
+
+    Player score: ${playerScore}
+    Computer score: ${computerScore}
+
+    Player moves: ${playerMoves}
+    Computer moves ${computerMoves}
+    `)
+
 }
 
 game();
