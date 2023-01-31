@@ -14,7 +14,7 @@ function getComputerChoice(){
  */
 function getPlayerChoice(){
     while (true){
-        let choice = prompt("Enter your incredible anc totally unexpected Rock, Paper, Scissor move").toLowerCase();
+        let choice = prompt("Enter your incredible and totally unexpected Rock, Paper, Scissor move").toLowerCase();
 
         switch(choice){
             case "rock": return moves[0] ;break;
@@ -26,33 +26,82 @@ function getPlayerChoice(){
 }
 
 /**
- * Check if the player won against the computer move.
+ * Check if who won the game.
  * @param {String} playerMove 
  * @param {String} computerMove 
- * @returns a string saying if the player won, loose or tie the computer
+ * @returns a string in which is contained the player who won
  */
 function checkWinner(playerMove, computerMove){
     let result = ""
-    if (playerMove == "Rock")
-        switch(computerMove){
-            case "Rock": result = "Tie!"; break;
-            case "Paper": result = "You freaking LOOSER!"; break;
-            case "Scissor": result = "You DESTROYED that stupid computer!"; break;
-        }
-    if (playerMove == "Paper")
-        switch(computerMove){
-            case "Rock": result = "You DESTROYED that stupid computer!"; break;
-            case "Paper": result = "Tie!"; break;
-            case "Scissor": result = "You freaking LOOSER!"; break;
-        }
-    if (playerMove == "Scissor")
-        switch(computerMove){
-            case "Rock": result = "You freaking LOOSER!"; break;
-            case "Paper": result = "You DESTROYED that stupid computer!"; break;
-            case "Scissor": result = "Tie!"; break;
-        }
+
+    switch(playerMove){
+        case "Rock": {
+            switch(computerMove){
+                case "Paper": result = "computer"; break;
+                case "Scissor": result = "player"; break;
+                default: result = "tie"; break;
+            }
+        }; break;
+        case "Paper": {
+            switch(computerMove){
+                case "Scissor": result = "computer"; break;
+                case "Rock": result = "player"; break;
+                default: result = "tie"; break;
+            }
+        }; break;
+        case "Scissor": {
+            switch(computerMove){
+                case "Rock": result = "computer"; break;
+                case "Paper": result = "player"; break;
+                default: result = "tie"; break;
+            }
+        }; break;
+    }
 
     return result;
 }
 
-alert(checkWinner(getPlayerChoice(), getComputerChoice()));
+/**
+ * Create and returns a message to the player based on his status at the end of a game.
+ * 
+ * @param {String} winner who won the game
+ * @returns a message to the player
+ */
+function messageToPlayer(winner){
+    let message = "";
+
+    switch(winner){
+        case "player": message = "You DESTROYED that stupid computer!"; break;
+        case "computer": message = "You freaking LOOSER!"; break;
+        default: message = "Tie!"; break;
+    }
+
+    return message;
+}
+// TODO: Serious debugging
+function game(){
+    const numberOfGames = 5;
+
+    let playerMoves = Array(numberOfGames);
+    let computerMoves = Array(numberOfGames);
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let game = 1; game <= numberOfGames; game++){
+
+        playerMoves[game-1] = getPlayerChoice();
+        computerMoves[game-1] = getComputerChoice();
+
+        let winner = checkWinner(playerMoves[game-1], computerMoves[game-1]);
+
+        alert(`
+        ${messageToPlayer(winner)}
+
+        You played: ${playerMoves[game-1]}
+        The computer played: ${computerMoves[game-1]}
+        `);
+    }
+}
+
+game();
