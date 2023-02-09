@@ -1,3 +1,4 @@
+/* whole page */
 html, body {
     height: 100%;   
     margin: 0%;     /* prevent the scroll bar to be enabled */
@@ -10,6 +11,7 @@ body {
     align-items: stretch;
 }
 
+/* header area */
 .header {
     background-color: coral;
     text-align: center;
@@ -17,6 +19,7 @@ body {
     padding: 25pt;
 }
 
+/* game area */
 .game {
     flex: 1;
     display: flex;
@@ -30,6 +33,16 @@ body {
     justify-content: space-evenly;
 }
 
+.moves-container button {
+    width: 100pt;
+    height: 100pt;
+}
+
+.cpu {
+    scale: 0.8;
+}
+
+/* score area */
 .score {
     display: flex;
     background-color: coral;
@@ -37,6 +50,7 @@ body {
 
 .score-container {
     flex: 1;
+    background-color: rgb(245, 91, 35);
 }
 
 .score h1 {
@@ -48,4 +62,12 @@ body {
     width: 100pt;
     background-color: olivedrab;
     border: none;
+}
+
+#reset:hover {
+    background-color: rgb(110, 128, 74);
+}
+
+#reset:active {
+    background-color: rgb(89, 100, 65);
 }
