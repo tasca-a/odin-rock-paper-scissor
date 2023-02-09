@@ -3,8 +3,33 @@
     <head>
         <title>Rock, Paper & Scissors!</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="./style.css">
         <script src="./game.js"></script>
     </head>
     <body>
+        <div class="header">
+            It's rock paper scissor time..
+        </div>
+        <div class="game">
+            <div class="moves-container cpu">
+                <button disabled>Rock</button>
+                <button disabled>Paper</button>
+                <button disabled>Scissor</button>
+            </div>
+            <div class="moves-container player">
+                <button>Rock</button>
+                <button>Paper</button>
+                <button>Scissor</button>
+            </div>
+        </div>
+        <div class="score">
+            <h1>Score:</h1>
+
+            <div class="score-container">
+                <!-- various score elements -->
+            </div>
+
+            <button id="reset">Reset</button>
+        </div>
     </body>
 </html>

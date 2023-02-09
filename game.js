@@ -120,4 +120,4 @@ function game(){
 
 }
 
-game();
+//game();

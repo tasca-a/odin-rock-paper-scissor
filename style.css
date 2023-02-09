@@ -1,0 +1,51 @@
+html, body {
+    height: 100%;   
+    margin: 0%;     /* prevent the scroll bar to be enabled */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.header {
+    background-color: coral;
+    text-align: center;
+    font-size: xx-large;
+    padding: 25pt;
+}
+
+.game {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.moves-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.score {
+    display: flex;
+    background-color: coral;
+}
+
+.score-container {
+    flex: 1;
+}
+
+.score h1 {
+    padding: 0% 20pt;
+}
+
+#reset {
+    font-size: large;
+    width: 100pt;
+    background-color: olivedrab;
+    border: none;
+}
