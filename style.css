@@ -28,6 +28,10 @@ body {
     align-items: stretch;
 }
 
+#winner-message {
+    align-self: center;
+}
+
 .moves-container {
     display: flex;
     justify-content: space-evenly;
@@ -43,7 +47,7 @@ body {
 }
 
 /* score area */
-.score {
+.score-area {
     display: flex;
     background-color: coral;
 }
@@ -51,10 +55,21 @@ body {
 .score-container {
     flex: 1;
     background-color: rgb(245, 91, 35);
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.score h1 {
+.score-area h1 {
     padding: 0% 20pt;
+}
+
+.score {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-size: large;
+    font-weight: bold;
 }
 
 #reset {
