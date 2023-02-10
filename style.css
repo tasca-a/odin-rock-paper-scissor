@@ -1,0 +1,88 @@
+/* whole page */
+html, body {
+    height: 100%;   
+    margin: 0%;     /* prevent the scroll bar to be enabled */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+/* header area */
+.header {
+    background-color: coral;
+    text-align: center;
+    font-size: xx-large;
+    padding: 25pt;
+}
+
+/* game area */
+.game {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+#winner-message {
+    align-self: center;
+}
+
+.moves-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.moves-container button {
+    width: 100pt;
+    height: 100pt;
+}
+
+.cpu {
+    scale: 0.8;
+}
+
+/* score area */
+.score-area {
+    display: flex;
+    background-color: coral;
+}
+
+.score-container {
+    flex: 1;
+    background-color: rgb(245, 91, 35);
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.score-area h1 {
+    padding: 0% 20pt;
+}
+
+.score {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-size: large;
+    font-weight: bold;
+}
+
+#reset {
+    font-size: large;
+    width: 100pt;
+    background-color: olivedrab;
+    border: none;
+}
+
+#reset:hover {
+    background-color: rgb(110, 128, 74);
+}
+
+#reset:active {
+    background-color: rgb(89, 100, 65);
+}

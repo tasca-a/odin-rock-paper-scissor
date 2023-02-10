@@ -25,6 +25,9 @@ function getPlayerChoice(){
     }
 }
 
+const playerName = "Player"
+const computerName = "Computer"
+
 /**
  * Check if who won the game.
  * @param {String} playerMove 
@@ -37,22 +40,22 @@ function checkWinner(playerMove, computerMove){
     switch(playerMove){
         case "Rock": {
             switch(computerMove){
-                case "Paper": result = "computer"; break;
-                case "Scissor": result = "player"; break;
+                case "Paper": result = computerName; break;
+                case "Scissor": result = playerName; break;
                 default: result = "tie"; break;
             }
         }; break;
         case "Paper": {
             switch(computerMove){
-                case "Scissor": result = "computer"; break;
-                case "Rock": result = "player"; break;
+                case "Scissor": result = computerName; break;
+                case "Rock": result = playerName; break;
                 default: result = "tie"; break;
             }
         }; break;
         case "Scissor": {
             switch(computerMove){
-                case "Rock": result = "computer"; break;
-                case "Paper": result = "player"; break;
+                case "Rock": result = computerName; break;
+                case "Paper": result = playerName; break;
                 default: result = "tie"; break;
             }
         }; break;
@@ -78,7 +81,7 @@ function messageToPlayer(winner){
 
     return message;
 }
-// TODO: Serious debugging
+
 function game(){
     const numberOfGames = 5;
 
@@ -120,4 +123,69 @@ function game(){
 
 }
 
-game();
+function guiGame(){
+    const maxScore = 5;
+
+    let playerScore = 0;
+    let computerScore = 0;
+
+    let playerButtons = document.querySelectorAll(".moves-container.player button");
+    playerButtons.forEach((button) => {
+        button.addEventListener("click", () =>{
+            // Get the moves
+            let playerMove = button.textContent;
+            let computerMove = getComputerChoice();
+
+            // Get the winner
+            let winner = checkWinner(playerMove, computerMove);
+
+            // Increment score
+            if (winner == playerName)
+                playerScore++;
+            if (winner == computerName)
+                computerScore++;
+
+            // Show the winner message
+            let winnerMessage = document.getElementById("winner-message");
+            if (winner == "tie")
+                winnerMessage.textContent = `Tie!`;
+            else
+                winnerMessage.textContent = `${winner} win!`;
+
+            // Create and show a score entry
+            let scoreEntry = document.createElement("p");
+            scoreEntry.className = "score";
+            scoreEntry.textContent = `${playerScore} - ${computerScore}`;
+
+            let scoreContainer = document.getElementsByClassName("score-container").item(0);
+            scoreContainer.append(scoreEntry);
+
+            // Check game over
+            if (playerScore >= 5 || computerScore >= 5){
+                playerButtons.forEach((button) => {button.disabled = true});
+            }
+        })
+    })
+
+    let resetButton = document.getElementById("reset");
+    resetButton.addEventListener("click", () => {
+        // Reset game score
+        playerScore = 0;
+        computerScore = 0;
+
+        // Remove all score items
+        let scoreItems = document.querySelectorAll(".score");
+        scoreItems.forEach((scoreElement) => {
+            scoreElement.remove();
+        })
+
+        // Enable the player buttons
+        playerButtons.forEach((button) => {button.disabled = false});
+
+        // Remove winning message
+        let winnerMessage = document.getElementById("winner-message");
+        winnerMessage.textContent = "";
+    })
+}
+
+guiGame();
